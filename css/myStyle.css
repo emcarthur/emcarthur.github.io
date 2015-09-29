@@ -1,0 +1,128 @@
+body{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+
+.para-text{
+	margin-bottom: 8px;
+	}
+
+.image_off, #home:hover .image_on{
+   display:none
+}
+.image_on, #home:hover .image_off{
+   display:block
+}
+
+
+/* colors and fades for links */
+.font2{
+	font-family: 'Covered By Your Grace', cursive;
+}
+
+    A.green-text {text-decoration: none; color:#8dda25;}
+    A.blue-text {text-decoration: none; color:#323ea7;}
+    A.red-text {text-decoration: none; color: #cc0000;}
+    A.black-text{text-decoration: none; color: black;}
+
+    .fade-img{
+        opacity:1.0;
+        filter: alpha(opacity=100)
+    }
+
+    .fade-img:hover {
+        opacity: 0.6;
+        filter: alpha(opacity=60)
+    }
+
+    .highlight-green:hover{
+        background-color: #8dda25;
+        color: white;
+    }
+
+    .highlight-blue:hover{
+        background-color:#323ea7;
+        color: white;
+    }
+
+    .highlight-red:hover{
+        background-color:#cc0000;
+        color: white;
+    }
+
+
+.header-boxes {
+    padding: 5px;
+}
+.no-top-margin {
+	margin-top: 0px;
+}
+
+.slider-size {
+height: 500px;
+background-color:#1a1a1a;
+margin-left: auto;
+margin-right: auto;
+}
+
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none;
+}
+
+
+
+/* small screens */
+@media (max-width:990px) {
+    .title-text1 {
+		font-size:26px;
+		margin-top:30px;
+		margin-bottom:40px;
+		
+		text-align: center;
+	}
+    
+	.header-text1 {
+		font-size:18px;
+		margin-top:30px;
+		margin-bottom:30px;
+		
+		text-align: center;
+	}
+
+    .header-text2 {
+		font-size:22px;
+		margin-top:25px;
+		margin-bottom:0px;
+		
+		text-align: center;
+	}
+
+}
+
+/* large screens */
+@media (min-width: 990px) {
+    
+    .header-text1 {
+        font-size:20px;
+        margin-top:30px;
+        margin-bottom:40px;
+        text-align: left;
+		padding-left:0px;
+    }
+    
+    .header-text2 {
+		font-size:25px;
+		margin-top:25px;
+		margin-bottom:40px;
+		text-align: right;
+		padding-right:0px;
+	}
+
+    .title-text1 {
+        font-size:30px;
+        margin-top:30px;
+        margin-bottom:120px;
+        text-align: right;
+    }
+}
