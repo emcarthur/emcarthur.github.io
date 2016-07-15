@@ -20,9 +20,10 @@ body{
 	font-family: 'Covered By Your Grace', cursive;
 }
 
-    A.green-text {text-decoration: none; color:#8dda25;}
+    A.green-text {text-decoration: none; color:#77c40f;}
     A.blue-text {text-decoration: none; color:#323ea7;}
     A.red-text {text-decoration: none; color: #cc0000;}
+	A.purple-text {text-decoration: none; color: #90078c;}
     A.black-text{text-decoration: none; color: black;}
 
     .fade-img{
@@ -36,7 +37,7 @@ body{
     }
 
     .highlight-green:hover{
-        background-color: #8dda25;
+        background-color: #77c40f;
         color: white;
     }
 
@@ -47,6 +48,11 @@ body{
 
     .highlight-red:hover{
         background-color:#cc0000;
+        color: white;
+    }
+	
+	.highlight-purple:hover{
+        background-color:#90078c;
         color: white;
     }
 
