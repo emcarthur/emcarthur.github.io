@@ -1,4 +1,3 @@
-browser position chr22
 track name=3dBrowserTADboundaries description="3dBrowserTADboundaries-40kb binned" visibility=dense color=0,128,0 useScore=1
 chr1	40000	79999	1	443
 chr1	520000	559999	1	371
