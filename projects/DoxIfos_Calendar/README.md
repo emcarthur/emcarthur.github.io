@@ -7,7 +7,7 @@ Based extensively on html/javascript/css from [Fullcalendar](https://fullcalenda
 
 All events can be dragged and dropped to different days in case the clinician is out of town and holds clinic on a different day.
 
-**HTML will be live for use on my website:** [emcarthur.github.io/projects/DoxIfos_Calendar](emcarthur.github.io/projects/DoxIfos_Calendar)
+**HTML will be live for use on my website:** [emcarthur.github.io/projects/DoxIfos_Calendar/](http://emcarthur.github.io/projects/DoxIfos_Calendar/)
 
 To customize to your own schedule, change these parts of the `index.html` document:
 ```
