@@ -5,7 +5,7 @@ An dynamic calendar to help patients keep track of their cancer infusion schedul
 
 **Sample PDF Schedule downloaded from the website:** [emcarthur.github.io/projects/DoxIfos_Calendar/sample_schedule.pdf](http://emcarthur.github.io/projects/DoxIfos_Calendar/sample_schedule.pdf)
 
-Dr. Davis' clinic is on M/Th so the schedule will start patient cycles on the upcoming M/Th. Labs and clinic visit at white blood cell count nadir is on day 10 for patients that start on Monday and day 11 for patients that start on Thursday.
+Dr. Davis' clinic is on Monday so the schedule will start patient cycles on the upcoming Monday. Labs and clinic visit at white blood cell count nadir is on day 10 for patients (the following Thursday). 
 
 Based extensively on html/javascript/css from [Fullcalendar](https://fullcalendar.io/).
 
