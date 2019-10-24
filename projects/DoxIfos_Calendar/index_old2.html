@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link href='./core/main.css' rel='stylesheet' />
+<link href='./daygrid/main.css' rel='stylesheet' />
+<link href='./timegrid/main.css' rel='stylesheet' />
+<script src='./core/main.js'></script>
+<script src='./interaction/main.js'></script>
+<script src='./daygrid/main.js'></script>
+<script src='./timegrid/main.js'></script>
+<script>
+
+
+ 
+  function myFunction() {
+  
+    var questions = document.getElementById("questions");
+	questions.style.display = "none";
+	
+    if (document.getElementById("instructions_yesNo").value == "Yes") {
+	  document.getElementById('patient_instructions').style.display='block';
+    }
+	numAbsCycles = document.getElementById("numCycles").value - document.getElementById("cycleStart").value + 1
+	
+
+	
+    today = new Date();
+    y = today.getFullYear();
+    m = today.getMonth();
+    d = today.getDate();
+	day = today.getDay();
+	
+	if (day == 0) {
+	  d = d + 1; 
+	  d10 = d + 10;
+	} else if (day == 1) {
+	  d10 = d + 10;
+	} else if (day==2) {
+	  d = d + 6;
+	} else if (day==3) {
+	  d = d + 5;
+	} else if (day==4) {
+	  d = d + 4;
+    } else if (day==5) {
+      d = d + 3;
+    } else if (day==6) {
+      d = d + 2;
+    }	  
+	
+	d10 = d + 10;
+	
+    var calendarEl = document.getElementById('calendar');
+    skillsSelect = document.getElementById("numCycles");
+	selectedText = skillsSelect.options[skillsSelect.selectedIndex].text;
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+	  displayEventTime : false,
+      plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+      header: {
+        left: 'prev,next',
+        center: 'title',
+        right: 'dayGridMonth'
+      },
+      defaultDate: today,
+      navLinks: true, // can click day/week names to navigate views
+      selectable: true,
+      selectMirror: true,
+      select: function(arg) {
+        var title = prompt('Event Title:');
+        if (title) {
+          calendar.addEvent({
+            title: title,
+            start: arg.start,
+            end: arg.end,
+            allDay: arg.allDay
+          })
+        }
+        calendar.unselect()
+      },
+      editable: true,
+      eventLimit: false, // allow "more" link when too many events
+      events: [
+	  	{
+        title: selectedText,
+        start: new Date(y, m, d, 1),
+        color: 'black'
+		},
+	  	{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d, 6),
+        color: 'green'
+		},
+		{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d10, 6),
+        color: 'green'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d, 5),
+        color: 'red'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d10, 5),
+        color: 'red'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+1, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+2, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Doxorubicin Infusion',
+        start: new Date(y, m, d, 10),
+        end: new Date(y, m, d+2, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Ifosfamide Infusion',
+        start: new Date(y, m, d, 10),
+        end: new Date(y, m, d+2, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+1, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+2, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Neulasta',
+        start: new Date(y, m, d+2, 13),
+        color: 'brown' 
+		}, 
+		{
+        title: '',
+        start: new Date(y, m, d+1, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+1, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2, 10),
+        color: 'white' 
+		},
+		{
+        title: 'Dexamethasone 4mg 2x daily',
+        start: new Date(y, m, d+3),
+		end: new Date(y, m, d+6),
+        color: 'pink' 
+		}, 
+		{
+        title: 'Ondansetron 8mg 2x daily',
+        start: new Date(y, m, d+3),
+		end: new Date(y, m, d+6),
+        color: 'pink' 
+		}, 
+		{
+        title: 'CYCLE 2',
+        start: new Date(y, m, d+21, 1),
+        color: 'black'
+		},
+	  	{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d+21, 6),
+        color: 'green'
+		},
+		{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d10+21, 6),
+        color: 'green'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d+21, 5),
+        color: 'red'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d10+21, 5),
+        color: 'red'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+1+21, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+2+21, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Doxorubicin Infusion',
+        start: new Date(y, m, d+21, 10),
+        end: new Date(y, m, d+2+21, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Ifosfamide Infusion',
+        start: new Date(y, m, d+21, 10),
+        end: new Date(y, m, d+2+21, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+21, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+1+21, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+2+21, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Neulasta',
+        start: new Date(y, m, d+2+21, 13),
+        color: 'brown' 
+		}, 
+		{
+        title: '',
+        start: new Date(y, m, d+1+21, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+1+21, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2+21, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2+21, 10),
+        color: 'white' 
+		},
+		{
+        title: 'Dexamethasone 4mg 2x daily',
+        start: new Date(y, m, d+3+21),
+		end: new Date(y, m, d+6+21),
+        color: 'pink' 
+		}, 
+		{
+        title: 'Ondansetron 8mg 2x daily',
+        start: new Date(y, m, d+3+21),
+		end: new Date(y, m, d+6+21),
+        color: 'pink' 
+		}, 
+		{
+        title: 'CYCLE 3',
+        start: new Date(y, m, d+42, 1),
+        color: 'black'
+		},
+	  	{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d+42, 6),
+        color: 'green'
+		},
+		{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d10+42, 6),
+        color: 'green'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d+42, 5),
+        color: 'red'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d10+42, 5),
+        color: 'red'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+1+42, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+2+42, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Doxorubicin Infusion',
+        start: new Date(y, m, d+42, 10),
+        end: new Date(y, m, d+2+42, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Ifosfamide Infusion',
+        start: new Date(y, m, d+42, 10),
+        end: new Date(y, m, d+2+42, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+42, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+1+42, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+2+42, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Neulasta',
+        start: new Date(y, m, d+2+42, 13),
+        color: 'brown' 
+		}, 
+		{
+        title: '',
+        start: new Date(y, m, d+1+42, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+1+42, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2+42, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2+42, 10),
+        color: 'white' 
+		},
+		{
+        title: 'Dexamethasone 4mg 2x daily',
+        start: new Date(y, m, d+3+42),
+		end: new Date(y, m, d+6+42),
+        color: 'pink' 
+		}, 
+		{
+        title: 'Ondansetron 8mg 2x daily',
+        start: new Date(y, m, d+3+42),
+		end: new Date(y, m, d+6+42),
+        color: 'pink' 
+		}, 
+		{
+        title: 'CYCLE 4',
+        start: new Date(y, m, d+63, 1),
+        color: 'black'
+		},
+	  	{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d+63, 6),
+        color: 'green'
+		},
+		{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d10+63, 6),
+        color: 'green'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d+63, 5),
+        color: 'red'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d10+63, 5),
+        color: 'red'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+1+63, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+2+63, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Doxorubicin Infusion',
+        start: new Date(y, m, d+63, 10),
+        end: new Date(y, m, d+2+63, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Ifosfamide Infusion',
+        start: new Date(y, m, d+63, 10),
+        end: new Date(y, m, d+2+63, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+63, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+1+63, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+2+63, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Neulasta',
+        start: new Date(y, m, d+2+63, 13),
+        color: 'brown' 
+		}, 
+		{
+        title: '',
+        start: new Date(y, m, d+1+63, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+1+63, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2+63, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2+63, 10),
+        color: 'white' 
+		},
+		{
+        title: 'Dexamethasone 4mg 2x daily',
+        start: new Date(y, m, d+3+63),
+		end: new Date(y, m, d+6+63),
+        color: 'pink' 
+		}, 
+		{
+        title: 'Ondansetron 8mg 2x daily',
+        start: new Date(y, m, d+3+63),
+		end: new Date(y, m, d+6+63),
+        color: 'pink' 
+		},
+		{
+        title: 'CYCLE 5',
+        start: new Date(y, m, d+84, 1),
+        color: 'black'
+		},
+	  	{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d+84, 6),
+        color: 'green'
+		},
+		{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d10+84, 6),
+        color: 'green'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d+84, 5),
+        color: 'red'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d10+84, 5),
+        color: 'red'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+1+84, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+2+84, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Doxorubicin Infusion',
+        start: new Date(y, m, d+84, 10),
+        end: new Date(y, m, d+2+84, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Ifosfamide Infusion',
+        start: new Date(y, m, d+84, 10),
+        end: new Date(y, m, d+2+84, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+84, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+1+84, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+2+84, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Neulasta',
+        start: new Date(y, m, d+2+84, 13),
+        color: 'brown' 
+		}, 
+		{
+        title: '',
+        start: new Date(y, m, d+1+84, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+1+84, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2+84, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2+84, 10),
+        color: 'white' 
+		},
+		{
+        title: 'Dexamethasone 4mg 2x daily',
+        start: new Date(y, m, d+3+84),
+		end: new Date(y, m, d+6+84),
+        color: 'pink' 
+		}, 
+		{
+        title: 'Ondansetron 8mg 2x daily',
+        start: new Date(y, m, d+3+84),
+		end: new Date(y, m, d+6+84),
+        color: 'pink' 
+		}, 
+		{
+        title: 'CYCLE 6',
+        start: new Date(y, m, d+105, 1),
+        color: 'black'
+		},
+	  	{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d+105, 6),
+        color: 'green'
+		},
+		{
+        title: 'Davis Clinic',
+        start: new Date(y, m, d10+105, 6),
+        color: 'green'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d+105, 5),
+        color: 'red'
+		},
+		{
+        title: 'Labs',
+        start: new Date(y, m, d10+105, 5),
+        color: 'red'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+1+105, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Urine Labs',
+        start: new Date(y, m, d+2+105, 5),
+        color: 'orange'
+		},
+		{
+        title: 'Doxorubicin Infusion',
+        start: new Date(y, m, d+105, 10),
+        end: new Date(y, m, d+2+105, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Ifosfamide Infusion',
+        start: new Date(y, m, d+105, 10),
+        end: new Date(y, m, d+2+105, 10),
+        color: 'blue'
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+105, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+1+105, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Mesna @ ___ PM',
+        start: new Date(y, m, d+2+105, 11),
+        color: 'purple' 
+		},
+		{
+        title: 'Neulasta',
+        start: new Date(y, m, d+2+105, 13),
+        color: 'brown' 
+		}, 
+		{
+        title: '',
+        start: new Date(y, m, d+1+105, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+1+105, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2+105, 10),
+        color: 'white' 
+		},
+		{
+        title: '',
+        start: new Date(y, m, d+2+105, 10),
+        color: 'white' 
+		},
+		{
+        title: 'Dexamethasone 4mg 2x daily',
+        start: new Date(y, m, d+3+105),
+		end: new Date(y, m, d+6+105),
+        color: 'pink' 
+		}, 
+		{
+        title: 'Ondansetron 8mg 2x daily',
+        start: new Date(y, m, d+3+105),
+		end: new Date(y, m, d+6+105),
+        color: 'pink' 
+		}, 
+      ],
+    });
+
+    calendar.render();
+
+  };
+
+
+</script>
+<style>
+
+  body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+  }
+
+  #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+</style>
+</head>
+<body>
+
+<div id="questions" style=text-align:center>
+
+Number of cycles:  
+<select id="numCycles">
+  <option value=1>1</option>
+  <option value=2>2</option>
+  <option value=3>3</option>
+  <option value=4>4</option>
+  <option value=5>5</option>
+  <option value=6 selected>6</option>
+</select>
+<br>
+What cycle to start on:  
+<select id="cycleStart">
+  <option value=1 selected>1</option>
+  <option value=2>2</option>
+  <option value=3>3</option>
+  <option value=4>4</option>
+  <option value=5>5</option>
+  <option value=6>6</option>
+</select>
+<br>
+Include patient instructions?:  
+<select id="instructions_yesNo">
+  <option value="Yes" selected>Yes</option>
+  <option value="No">No</option>
+</select>
+<br>
+<br>
+<input type="submit" value="Submit" onclick="myFunction()">
+</div>
+
+  <div id='calendar'></div>
+  <br>
+  <img src="./schematic.JPG" width="900" class="center" id="patient_instructions" style="display:none;">
+<script>
+
+</script>
+
+</body>
+</html>
